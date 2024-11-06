@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Videojuegos</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #222;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 1.5em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header svg {
+            width: 40px;
+            height: 40px;
+            fill: #4CAF50;
+        }
+
+        /* Contenedor de productos */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Producto */
+        .product {
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #4CAF50;
+        }
+
+        .product p {
+            font-size: 1rem;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .product .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .product .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 0.9rem;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .product-container {
+                padding: 20px 10px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .product {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5V14H9v2H7v-2H5v-2h2v-1c0-2.21 1.79-4 4-4s4 1.79 4 4v1h2v2h-2v2h-2v-2h-2zm3-5h-2v1h2v-1z"/>
+            </svg>
+            VideoGames Store
+        </h1>
+    </header>
+    
+    <main>
+        <section class="product-container">
+            <!-- Producto 1 -->
+            <div class="product">
+                <img src="images/1.jpg" alt="Producto 1">
+                <h2>Videojuego 1</h2>
+                <p>Aventura épica en un mundo abierto. Disponible para todas las plataformas.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 1, nombre: 'Videojuego 1', descripcion: 'Aventura épica' })">Comprar Ahora</a>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product">
+                <img src="images/2.jpeg" alt="Producto 2">
+                <h2>Videojuego 2</h2>
+                <p>Juego de acción multijugador con gráficos impresionantes.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 2, nombre: 'Videojuego 2', descripcion: 'Juego de acción' })">Comprar Ahora</a>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product">
+                <img src="images/3.jpeg" alt="Producto 3">
+                <h2>Videojuego 3</h2>
+                <p>Un título clásico de plataformas con una nueva versión HD.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 3, nombre: 'Videojuego 3', descripcion: 'Título clásico' })">Comprar Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VideoGames Store. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./js/sw.js')
+                .then(registration => {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(error => {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+        }
+
+        // Solicitar permiso de notificación
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                console.log("Permiso de notificación otorgado.");
+            }
+        });
+
+        // Configurar la base de datos IndexedDB
+        let db;
+        const request = indexedDB.open("VideoGamesStoreDB", 2);
+
+        request.onupgradeneeded = event => {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains("carrito")) {
+                db.createObjectStore("carrito", { keyPath: "id" });
+                console.log("Object store 'carrito' creado.");
+            }
+        };
+
+        request.onsuccess = event => {
+            db = event.target.result;
+            console.log("Base de datos abierta con éxito.");
+        };
+
+        request.onerror = event => {
+            console.error("Error al abrir la base de datos:", event);
+        };
+
+        // Función para agregar al carrito
+        function agregarAlCarrito(producto) {
+            if (!db) {
+                console.error("Base de datos no inicializada.");
+                return;
+            }
+
+            const transaction = db.transaction(["carrito"], "readwrite");
+            const carritoStore = transaction.objectStore("carrito");
+
+            const addRequest = carritoStore.add(producto);
+
+            addRequest.onsuccess = () => {
+                mostrarNotificacion("Producto agregado al carrito exitosamente");
+                console.log("Producto agregado al carrito:", producto);
+            };
+
+            addRequest.onerror = event => {
+                console.error("Error al agregar al carrito:", event);
+                alert("No se pudo agregar el producto al carrito. Puede que ya exista.");
+            };
+
+            transaction.onerror = event => {
+                console.error("Error en la transacción:", event);
+            };
+        }
+
+        // Función para mostrar la notificación
+        function mostrarNotificacion(mensaje) {
+            if (Notification.permission === "granted") {
+                navigator.serviceWorker.ready.then(registration => {
+                    registration.showNotification("VideoGames Store", {
+                        body: mensaje,
+                        icon: "images/carrito.png",
+                        badge: "images/2.png"
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+</html>
