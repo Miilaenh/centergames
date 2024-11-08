@@ -1,21 +1,21 @@
 {
-    "short_name": "VideoGames Store",
-    "name": "Tienda de Videojuegos",
-    "icons": [
-      {
-        "src": "images/1.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "images/2.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "start_url": "/index.html",
-    "display": "standalone",
-    "theme_color": "#4CAF50",
-    "background_color": "#1e1e1e"
-  }
-  
+  "name": "Tienda de Videojuegos",
+  "short_name": "VideoGames Store",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1e1e1e",
+  "theme_color": "#4CAF50",
+  "description": "Compra y vende videojuegos con facilidad.",
+  "icons": [
+    {
+      "src": "images/4.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/5.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

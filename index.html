@@ -12,8 +12,11 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1e1e1e;
-            color: #fff;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Encabezado */
@@ -23,6 +26,7 @@
             text-align: center;
             padding: 1.5em;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            width: 100%;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -30,12 +34,12 @@
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         header svg {
@@ -53,37 +57,61 @@
             padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            background-color: #fff;
         }
 
         /* Producto */
         .product {
-            background-color: #2c2c2c;
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 250px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #ddd;
         }
 
         .product:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
+        #splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Puedes ajustar el color de fondo */
+    z-index: 9999;
+}
+
+#splash-screen img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
 
         .product img {
             width: 100%;
             border-radius: 10px;
+            margin-bottom: 15px;
+            height: 200px;
+            object-fit: cover;
         }
 
         .product h2 {
             margin: 10px 0;
             font-size: 1.5rem;
-            color: #4CAF50;
+            color: #333;
         }
 
         .product p {
             font-size: 1rem;
-            color: #bbb;
+            color: #777;
             margin-bottom: 20px;
         }
 
@@ -96,6 +124,7 @@
             border-radius: 5px;
             font-size: 1rem;
             transition: background-color 0.3s ease;
+            box-sizing: border-box;
         }
 
         .product .btn:hover {
@@ -115,18 +144,21 @@
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
 
-        /* Responsividad */
+        /* Diseño responsive */
         @media (max-width: 768px) {
-            .product-container {
-                padding: 20px 10px;
-            }
-
             header h1 {
                 font-size: 2rem;
             }
 
+            .product-container {
+                padding: 20px;
+                gap: 10px;
+            }
+
             .product {
                 width: 100%;
+                max-width: 220px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -140,33 +172,115 @@
             VideoGames Store
         </h1>
     </header>
+      <!-- Pantalla de Splash -->
+      <div id="splash-screen">
+        <img src="images/logo.png" alt="Logo">
+    </div>
+
+    <!-- Pantalla Home -->
+    <div id="home-screen" style="display: none;">
+        <h1>Bienvenido a Center Games</h1>
+        <!-- Agrega más contenido aquí para la pantalla Home -->
+    </div>
     
     <main>
         <section class="product-container">
-            <!-- Producto 1 -->
+            
+            <!-- Productos -->
             <div class="product">
-                <img src="images/1.jpg" alt="Producto 1">
-                <h2>Videojuego 1</h2>
-                <p>Aventura épica en un mundo abierto. Disponible para todas las plataformas.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 1, nombre: 'Videojuego 1', descripcion: 'Aventura épica' })">Comprar Ahora</a>
+                <img src="images/1.jpg" alt="Roblox">
+                <h2>Roblox</h2>
+                <p>Un universo de posibilidades donde puedes crear, jugar y explorar con amigos.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 1, nombre: 'Roblox', descripcion: 'Universo de posibilidades y creación' })">Comprar Ahora</a>
             </div>
-
-            <!-- Producto 2 -->
             <div class="product">
-                <img src="images/2.jpeg" alt="Producto 2">
-                <h2>Videojuego 2</h2>
-                <p>Juego de acción multijugador con gráficos impresionantes.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 2, nombre: 'Videojuego 2', descripcion: 'Juego de acción' })">Comprar Ahora</a>
+                <img src="images/2.jpeg" alt="Minecraft">
+                <h2>Minecraft</h2>
+                <p>Un juego de construcción en mundo abierto donde la creatividad es el límite.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 2, nombre: 'Minecraft', descripcion: 'Juego de construcción en mundo abierto' })">Comprar Ahora</a>
             </div>
-
-            <!-- Producto 3 -->
             <div class="product">
-                <img src="images/3.jpeg" alt="Producto 3">
-                <h2>Videojuego 3</h2>
-                <p>Un título clásico de plataformas con una nueva versión HD.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 3, nombre: 'Videojuego 3', descripcion: 'Título clásico' })">Comprar Ahora</a>
+                <img src="images/3.jpeg" alt="Fortnite">
+                <h2>Fortnite</h2>
+                <p>Juego de batalla real lleno de acción y desafíos en línea.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 3, nombre: 'Fortnite', descripcion: 'Juego de batalla real' })">Comprar Ahora</a>
             </div>
+            <div class="product">
+                <img src="images/4.jpg" alt="Kirby and the Forgotten Land">
+                <h2>Kirby and the Forgotten Land</h2>
+                <p>Acompaña a Kirby en una aventura en un misterioso mundo nuevo.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 4, nombre: 'Kirby and the Forgotten Land', descripcion: 'Aventura en un mundo misterioso' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/5.jpg" alt="Crash Bandicoot">
+                <h2>Crash Bandicoot</h2>
+                <p>Corre, salta y gira en esta clásica aventura de plataformas.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 5, nombre: 'Crash Bandicoot', descripcion: 'Aventura de plataformas clásica' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/6.jpg" alt="Grand Theft Auto V">
+                <h2>Grand Theft Auto V</h2>
+                <p>Vive la vida de tres criminales en Los Santos en este icónico juego de mundo abierto.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 6, nombre: 'Grand Theft Auto V', descripcion: 'Juego de mundo abierto' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/7.jpg" alt="Super Mario 64">
+                <h2>Super Mario 64</h2>
+                <p>Embárcate en una aventura en 3D para rescatar a la princesa Peach.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 7, nombre: 'Super Mario 64', descripcion: 'Aventura en 3D de Mario' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/8.jpg" alt="Super Mario Bros 3">
+                <h2>Super Mario Bros 3</h2>
+                <p>Únete a Mario en una de las aventuras de plataformas más queridas.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 8, nombre: 'Super Mario Bros 3', descripcion: 'Aventura de plataformas clásica' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/9.jpg" alt="DOOM">
+                <h2>DOOM</h2>
+                <p>Desata la furia en esta frenética batalla contra hordas de demonios.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 9, nombre: 'DOOM', descripcion: 'Juego de disparos en primera persona' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/10.jpg" alt="Spider-Man">
+                <h2>Spider-Man</h2>
+                <p>Vive la experiencia de ser Spider-Man en una ciudad abierta y llena de acción.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 10, nombre: 'Spider-Man', descripcion: 'Juego de superhéroes en mundo abierto' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/11.jpg" alt="Mario Party">
+                <h2>Mario Party</h2>
+                <p>Compite con amigos en minijuegos y desafíos en este juego de fiesta.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 11, nombre: 'Mario Party', descripcion: 'Juego de fiesta y minijuegos' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/12.jpg" alt="Dragon Ball Sparking Zero">
+                <h2>Dragon Ball Sparking Zero</h2>
+                <p>Juego de lucha basado en la famosa serie de Dragon Ball, con combates intensos y poderes espectaculares.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 12, nombre: 'Dragon Ball Sparking Zero', descripcion: 'Juego de lucha de Dragon Ball' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/13.jpg" alt="Spider-Man Miles Morales">
+                <h2>Spider-Man: Miles Morales</h2>
+                <p>Únete a Miles en una nueva aventura como el héroe Spider-Man.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 13, nombre: 'Spider-Man: Miles Morales', descripcion: 'Aventura de superhéroe' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/14.jpg" alt="Super Smash Bros">
+                <h2>Super Smash Bros</h2>
+                <p>Elige a tus personajes favoritos y lucha en este icónico juego de peleas.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 14, nombre: 'Super Smash Bros', descripcion: 'Juego de peleas con personajes icónicos' })">Comprar Ahora</a>
+            </div>
+            <div class="product">
+                <img src="images/15.jpg" alt="New Super Mario Bros Wii">
+                <h2>New Super Mario Bros Wii</h2>
+                <p>Aventura de plataformas donde puedes jugar con amigos para rescatar a la princesa.</p>
+                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 15, nombre: 'New Super Mario Bros Wii', descripcion: 'Aventura de plataformas para toda la familia' })">Comprar Ahora</a>
+            </div>
+        </div>
         </section>
+        
+        
     </main>
 
     <footer>
@@ -175,7 +289,7 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./js/sw.js')
+            navigator.serviceWorker.register('sw.js')
                 .then(registration => {
                     console.log('Service Worker registrado con éxito:', registration);
                 })
@@ -184,14 +298,8 @@
                 });
         }
 
-        // Solicitar permiso de notificación
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                console.log("Permiso de notificación otorgado.");
-            }
-        });
+        Notification.requestPermission();
 
-        // Configurar la base de datos IndexedDB
         let db;
         const request = indexedDB.open("VideoGamesStoreDB", 2);
 
@@ -199,58 +307,44 @@
             db = event.target.result;
             if (!db.objectStoreNames.contains("carrito")) {
                 db.createObjectStore("carrito", { keyPath: "id" });
-                console.log("Object store 'carrito' creado.");
             }
         };
 
         request.onsuccess = event => {
             db = event.target.result;
-            console.log("Base de datos abierta con éxito.");
         };
 
-        request.onerror = event => {
-            console.error("Error al abrir la base de datos:", event);
-        };
-
-        // Función para agregar al carrito
         function agregarAlCarrito(producto) {
             if (!db) {
-                console.error("Base de datos no inicializada.");
                 return;
             }
-
             const transaction = db.transaction(["carrito"], "readwrite");
             const carritoStore = transaction.objectStore("carrito");
-
             const addRequest = carritoStore.add(producto);
 
             addRequest.onsuccess = () => {
                 mostrarNotificacion("Producto agregado al carrito exitosamente");
-                console.log("Producto agregado al carrito:", producto);
-            };
-
-            addRequest.onerror = event => {
-                console.error("Error al agregar al carrito:", event);
-                alert("No se pudo agregar el producto al carrito. Puede que ya exista.");
-            };
-
-            transaction.onerror = event => {
-                console.error("Error en la transacción:", event);
             };
         }
 
-        // Función para mostrar la notificación
         function mostrarNotificacion(mensaje) {
             if (Notification.permission === "granted") {
                 navigator.serviceWorker.ready.then(registration => {
                     registration.showNotification("VideoGames Store", {
                         body: mensaje,
                         icon: "images/carrito.png",
-                        badge: "images/2.png"
+                        badge: "images/carrito.png"
                     });
                 });
             }
         }
+        document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        document.getElementById("splash-screen").style.display = "none";
+        document.getElementById("home-screen").style.display = "block";
+    }, 3000); // 3000 ms = 3 segundos
+});
+
     </script>
 </body>
 </html>

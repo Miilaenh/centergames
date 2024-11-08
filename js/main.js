@@ -30,3 +30,13 @@ function mostrarNotificacion(mensaje) {
         });
     }
 }
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        document.getElementById("splash-screen").style.display = "none";
+    }, 3000); // 3000 ms = 3 segundos
+});
+setTimeout(function () {
+    document.getElementById("splash-screen").style.display = "none";
+    document.getElementById("home-screen").style.display = "block";
+}, 3000);
+
