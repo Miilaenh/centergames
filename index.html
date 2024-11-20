@@ -344,7 +344,15 @@
         document.getElementById("home-screen").style.display = "block";
     }, 3000); // 3000 ms = 3 segundos
 });
-
+if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+            console.log('Service Worker registrado con éxito:', registration.scope);
+        })
+        .catch(error => {
+            console.error('Error al registrar el Service Worker:', error);
+        });
+    }
     </script>
 </body>
 </html>
