@@ -7,7 +7,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos generales */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -19,7 +18,6 @@
             align-items: center;
         }
 
-        /* Encabezado */
         header {
             background-color: #222;
             color: #f4f4f4;
@@ -48,7 +46,6 @@
             fill: #4CAF50;
         }
 
-        /* Contenedor de productos */
         .product-container {
             display: flex;
             flex-wrap: wrap;
@@ -60,7 +57,6 @@
             background-color: #fff;
         }
 
-        /* Producto */
         .product {
             background-color: #fff;
             padding: 20px;
@@ -85,7 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff; /* Puedes ajustar el color de fondo */
+    background-color: #ffffff; 
     z-index: 9999;
 }
 
@@ -131,7 +127,6 @@
             background-color: #45a049;
         }
 
-        /* Pie de página */
         footer {
             background-color: #222;
             color: #aaa;
@@ -144,7 +139,6 @@
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
 
-        /* Diseño responsive */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -161,123 +155,179 @@
                 margin: 0 auto;
             }
         }
+         #cart-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff;
+        background: #4CAF50;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #cart-count {
+        background: #f00;
+        color: #fff;
+        padding: 2px 6px;
+        border-radius: 50%;
+        margin-left: 8px;
+    }
+    .price {
+    font-size: 1.2em;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5V14H9v2H7v-2H5v-2h2v-1c0-2.21 1.79-4 4-4s4 1.79 4 4v1h2v2h-2v2h-2v-2h-2zm3-5h-2v1h2v-1z"/>
-            </svg>
-            VideoGames Store
-        </h1>
-    </header>
-      <!-- Pantalla de Splash -->
+   <header>
+    <h1>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5V14H9v2H7v-2H5v-2h2v-1c0-2.21 1.79-4 4-4s4 1.79 4 4v1h2v2h-2v2h-2v-2h-2zm3-5h-2v1h2v-1z"/>
+        </svg>
+        VideoGames Store
+    </h1>
+    <div id="cart-icon" onclick="irAlCarrito()">
+        🛒 <span id="cart-count">0</span>
+    </div>
+</header>
       <div id="splash-screen">
         <img src="images/logo.png" alt="Logo">
     </div>
 
-    <!-- Pantalla Home -->
     <div id="home-screen" style="display: none;">
         <h1>Bienvenido a Center Games</h1>
-        <!-- Agrega más contenido aquí para la pantalla Home -->
     </div>
     
     <main>
         <section class="product-container">
             
-            <!-- Productos -->
             <div class="product">
-                <img src="images/1.jpg" alt="Roblox">
-                <h2>Roblox</h2>
-                <p>Un universo de posibilidades donde puedes crear, jugar y explorar con amigos.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 1, nombre: 'Roblox', descripcion: 'Universo de posibilidades y creación' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/2.jpeg" alt="Minecraft">
-                <h2>Minecraft</h2>
-                <p>Un juego de construcción en mundo abierto donde la creatividad es el límite.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 2, nombre: 'Minecraft', descripcion: 'Juego de construcción en mundo abierto' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/3.jpeg" alt="Fortnite">
-                <h2>Fortnite</h2>
-                <p>Juego de batalla real lleno de acción y desafíos en línea.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 3, nombre: 'Fortnite', descripcion: 'Juego de batalla real' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/4.jpg" alt="Kirby and the Forgotten Land">
-                <h2>Kirby and the Forgotten Land</h2>
-                <p>Acompaña a Kirby en una aventura en un misterioso mundo nuevo.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 4, nombre: 'Kirby and the Forgotten Land', descripcion: 'Aventura en un mundo misterioso' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/5.jpg" alt="Crash Bandicoot">
-                <h2>Crash Bandicoot</h2>
-                <p>Corre, salta y gira en esta clásica aventura de plataformas.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 5, nombre: 'Crash Bandicoot', descripcion: 'Aventura de plataformas clásica' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/6.jpg" alt="Grand Theft Auto V">
-                <h2>Grand Theft Auto V</h2>
-                <p>Vive la vida de tres criminales en Los Santos en este icónico juego de mundo abierto.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 6, nombre: 'Grand Theft Auto V', descripcion: 'Juego de mundo abierto' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/7.jpg" alt="Super Mario 64">
-                <h2>Super Mario 64</h2>
-                <p>Embárcate en una aventura en 3D para rescatar a la princesa Peach.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 7, nombre: 'Super Mario 64', descripcion: 'Aventura en 3D de Mario' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/8.jpg" alt="Super Mario Bros 3">
-                <h2>Super Mario Bros 3</h2>
-                <p>Únete a Mario en una de las aventuras de plataformas más queridas.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 8, nombre: 'Super Mario Bros 3', descripcion: 'Aventura de plataformas clásica' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/9.jpg" alt="DOOM">
-                <h2>DOOM</h2>
-                <p>Desata la furia en esta frenética batalla contra hordas de demonios.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 9, nombre: 'DOOM', descripcion: 'Juego de disparos en primera persona' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/10.jpg" alt="Spider-Man">
-                <h2>Spider-Man</h2>
-                <p>Vive la experiencia de ser Spider-Man en una ciudad abierta y llena de acción.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 10, nombre: 'Spider-Man', descripcion: 'Juego de superhéroes en mundo abierto' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/11.jpg" alt="Mario Party">
-                <h2>Mario Party</h2>
-                <p>Compite con amigos en minijuegos y desafíos en este juego de fiesta.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 11, nombre: 'Mario Party', descripcion: 'Juego de fiesta y minijuegos' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/12.jpg" alt="Dragon Ball Sparking Zero">
-                <h2>Dragon Ball Sparking Zero</h2>
-                <p>Juego de lucha basado en la famosa serie de Dragon Ball, con combates intensos y poderes espectaculares.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 12, nombre: 'Dragon Ball Sparking Zero', descripcion: 'Juego de lucha de Dragon Ball' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/13.jpg" alt="Spider-Man Miles Morales">
-                <h2>Spider-Man: Miles Morales</h2>
-                <p>Únete a Miles en una nueva aventura como el héroe Spider-Man.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 13, nombre: 'Spider-Man: Miles Morales', descripcion: 'Aventura de superhéroe' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/14.jpg" alt="Super Smash Bros">
-                <h2>Super Smash Bros</h2>
-                <p>Elige a tus personajes favoritos y lucha en este icónico juego de peleas.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 14, nombre: 'Super Smash Bros', descripcion: 'Juego de peleas con personajes icónicos' })">Comprar Ahora</a>
-            </div>
-            <div class="product">
-                <img src="images/15.jpg" alt="New Super Mario Bros Wii">
-                <h2>New Super Mario Bros Wii</h2>
-                <p>Aventura de plataformas donde puedes jugar con amigos para rescatar a la princesa.</p>
-                <a href="#" class="btn" onclick="agregarAlCarrito({ id: 15, nombre: 'New Super Mario Bros Wii', descripcion: 'Aventura de plataformas para toda la familia' })">Comprar Ahora</a>
-            </div>
-        </div>
+    <img src="images/1.jpg" alt="Roblox">
+    <h2>Roblox</h2>
+    <p>Un universo de posibilidades donde puedes crear, jugar y explorar con amigos.</p>
+    <p class="price">$19.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 1, nombre: 'Roblox', descripcion: 'Universo de posibilidades y creación', precio: 19.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/2.jpeg" alt="Minecraft">
+    <h2>Minecraft</h2>
+    <p>Un juego de construcción en mundo abierto donde la creatividad es el límite.</p>
+    <p class="price">$29.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 2, nombre: 'Minecraft', descripcion: 'Juego de construcción en mundo abierto', precio: 29.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/3.jpeg" alt="Fortnite">
+    <h2>Fortnite</h2>
+    <p>Juego de batalla real lleno de acción y desafíos en línea.</p>
+    <p class="price">Gratis</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 3, nombre: 'Fortnite', descripcion: 'Juego de batalla real', precio: 0.00 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/4.jpg" alt="Kirby and the Forgotten Land">
+    <h2>Kirby and the Forgotten Land</h2>
+    <p>Acompaña a Kirby en una aventura en un misterioso mundo nuevo.</p>
+    <p class="price">$49.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 4, nombre: 'Kirby and the Forgotten Land', descripcion: 'Aventura en un mundo misterioso', precio: 49.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/5.jpg" alt="Crash Bandicoot">
+    <h2>Crash Bandicoot</h2>
+    <p>Corre, salta y gira en esta clásica aventura de plataformas.</p>
+    <p class="price">$39.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 5, nombre: 'Crash Bandicoot', descripcion: 'Aventura de plataformas clásica', precio: 39.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/6.jpg" alt="Grand Theft Auto V">
+    <h2>Grand Theft Auto V</h2>
+    <p>Vive la vida de tres criminales en Los Santos en este icónico juego de mundo abierto.</p>
+    <p class="price">$29.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 6, nombre: 'Grand Theft Auto V', descripcion: 'Juego de mundo abierto', precio: 29.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/7.jpg" alt="Super Mario 64">
+    <h2>Super Mario 64</h2>
+    <p>Embárcate en una aventura en 3D para rescatar a la princesa Peach.</p>
+    <p class="price">$59.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 7, nombre: 'Super Mario 64', descripcion: 'Aventura en 3D de Mario', precio: 59.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/8.jpg" alt="Super Mario Bros 3">
+    <h2>Super Mario Bros 3</h2>
+    <p>Únete a Mario en una de las aventuras de plataformas más queridas.</p>
+    <p class="price">$19.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 8, nombre: 'Super Mario Bros 3', descripcion: 'Aventura de plataformas clásica', precio: 19.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/9.jpg" alt="DOOM">
+    <h2>DOOM</h2>
+    <p>Desata la furia en esta frenética batalla contra hordas de demonios.</p>
+    <p class="price">$14.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 9, nombre: 'DOOM', descripcion: 'Juego de disparos en primera persona', precio: 14.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/10.jpg" alt="Spider-Man">
+    <h2>Spider-Man</h2>
+    <p>Vive la experiencia de ser Spider-Man en una ciudad abierta y llena de acción.</p>
+    <p class="price">$49.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 10, nombre: 'Spider-Man', descripcion: 'Juego de superhéroes en mundo abierto', precio: 49.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/11.jpg" alt="Mario Party">
+    <h2>Mario Party</h2>
+    <p>Compite con amigos en minijuegos y desafíos en este juego de fiesta.</p>
+    <p class="price">$39.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 11, nombre: 'Mario Party', descripcion: 'Juego de fiesta y minijuegos', precio: 39.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/12.jpg" alt="Dragon Ball Sparking Zero">
+    <h2>Dragon Ball Sparking Zero</h2>
+    <p>Juego de lucha basado en la famosa serie de Dragon Ball, con combates intensos y poderes espectaculares.</p>
+    <p class="price">$59.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 12, nombre: 'Dragon Ball Sparking Zero', descripcion: 'Juego de lucha de Dragon Ball', precio: 59.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/13.jpg" alt="Spider-Man Miles Morales">
+    <h2>Spider-Man: Miles Morales</h2>
+    <p>Únete a Miles en una nueva aventura como el héroe Spider-Man.</p>
+    <p class="price">$49.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 13, nombre: 'Spider-Man: Miles Morales', descripcion: 'Aventura de superhéroe', precio: 49.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/14.jpg" alt="Super Smash Bros">
+    <h2>Super Smash Bros</h2>
+    <p>Elige a tus personajes favoritos y lucha en este icónico juego de peleas.</p>
+    <p class="price">$59.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 14, nombre: 'Super Smash Bros', descripcion: 'Juego de peleas con personajes icónicos', precio: 59.99 })">Comprar Ahora</a>
+</div>
+
+<div class="product">
+    <img src="images/15.jpg" alt="New Super Mario Bros Wii">
+    <h2>New Super Mario Bros Wii</h2>
+    <p>Aventura de plataformas donde puedes jugar con amigos para rescatar a la princesa.</p>
+    <p class="price">$39.99</p>
+    <a href="#" class="btn" onclick="agregarAlCarrito({ id: 15, nombre: 'New Super Mario Bros Wii', descripcion: 'Aventura de plataformas para toda la familia', precio: 39.99 })">Comprar Ahora</a>
+</div>
+
         </section>
         
         
@@ -297,6 +347,28 @@
                     console.log('Error al registrar el Service Worker:', error);
                 });
         }
+            function agregarAlCarrito(producto) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        const productoExistente = carrito.find(item => item.id === producto.id);
+        if (productoExistente) {
+            alert(`El producto "${producto.nombre}" ya está en el carrito.`);
+        } else {
+            carrito.push(producto);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert(`"${producto.nombre}" agregado al carrito.`);
+        }
+    }
+
+    function mostrarCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        if (carrito.length === 0) {
+            alert('El carrito está vacío.');
+        } else {
+            console.log('Carrito:', carrito);
+            alert(`Carrito:\n${carrito.map(item => `- ${item.nombre}`).join('\n')}`);
+        }
+    }
 
         Notification.requestPermission();
 
@@ -342,17 +414,29 @@
     setTimeout(function () {
         document.getElementById("splash-screen").style.display = "none";
         document.getElementById("home-screen").style.display = "block";
-    }, 3000); // 3000 ms = 3 segundos
+    }, 6000); 
 });
-if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-            console.log('Service Worker registrado con éxito:', registration.scope);
-        })
-        .catch(error => {
-            console.error('Error al registrar el Service Worker:', error);
-        });
-    }
+
     </script>
+    <script>
+    function agregarAlCarrito(producto) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.push(producto);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+    }
+
+    function actualizarContadorCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        document.getElementById('cart-count').innerText = carrito.length;
+    }
+
+    function irAlCarrito() {
+        window.location.href = 'carrito.html';
+    }
+
+    window.onload = actualizarContadorCarrito;
+</script>
+
 </body>
 </html>
